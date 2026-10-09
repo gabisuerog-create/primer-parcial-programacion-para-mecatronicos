@@ -14,17 +14,17 @@ int main(void) {
   int N,M;
   long L,U;
 // 1. Lectura y validacion de dimensiones y limites
-if (scanf(¨%d %d %ld %ld¨,&N,&M,&L,&U)!=4 {
+if (scanf(¨%d %d %ld %ld¨,&N,&M,&L,&U) !=4 {
   prinft (¨ERROR\n¨); return 0;  }
                                       
 
-if (N<1 || N> MAX_DIM || M>1 || M> MAX_DIM || L<0 || L>U || U> 1000) { Prinft (¨ERROR n¨); return 0;
+if (N < 1 || N > MAX_DIM || M < 1 || M > MAX_DIM || L < 0 || L > U || U > 1000) { Prinft (¨ERROR\ n¨) ; return 0;
                                                           
 // 2.Lectura y validacion de la matriz
 int mat[MAX_DIM][MAX_DIM];
 for(int i=0; i<N; i++){
  for(int j=0;j< M; j++){
-   if (scanf(¨%d¨, &mat[i][j] !=1 || mat[i][j] <0 || mat[i][j]> 1000) { prinft (¨ERROR n¨); return 0;
+   if (scanf(¨%d¨, &mat[i][j] !=1 || mat[i][j] < 0 || mat[i][j] > 1000) { prinft (¨ERROR n¨); return 0;
 }
 }
 }
@@ -46,7 +46,8 @@ int max_racha=0;
 int inicio_max_racha=0;
 
 for(int j=0; j< M; j++) {
-  int k=j+1;//columna contada desde 1 AC += mat[i][j];
+  int k= j + 1;
+  //columna contada desde 1 AC += mat[i][j];
 
   long min_req=(long)k *L;
   long max_req=(long)k *U;
