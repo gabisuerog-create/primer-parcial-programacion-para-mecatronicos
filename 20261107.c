@@ -3,6 +3,7 @@ Matricula: 20261107
 Correo: 20261107@itla.edu.doc
 archivo: 20261107.c
 compilacion: gcc-std= c11-Wall-wextra 20261107.c-o reto
+
 1) Codigo completo en c
 
 #include <studio.h>
@@ -121,7 +122,89 @@ return 0;
 
 
 2) Analisis del problema y pseudocodigo
+INICIO
 
+
+
+  
+1.Leer N,M,L y U.  
+2.Validar las dimensiones:
+*si N< 1 O N> 30, imprimir ERROR y terminar.
+*si M< 1 O M> 30, imprimir ERROR y terminar.
+
+3.Validar los limites:
+*si L< 0 O L> 1000, imprimir ERROR y terminar.
+*si U< 0 O U> 1000, imprimir ERROR y terminar.
+*si L> U, imprimir ERROR y terminar.
+
+4.Leer la matriz de N filas y M columnas.
+  * Para cada valor leido:
+    * si el valor es menor que 0 o mayor que 1000, imprimir error y terminar.
+
+5.Inicializar en cero:
+  *eventosfila[N]
+  *impactofila[N]
+  *rachafila[N]
+  *inicioracha[N]
+  *eventoscolumna[M]
+
+6.Para cada fila i desde 0 hasta N-1:
+  *inicializar:
+  * AC= 0
+  * rachaactual= 0
+  * inicioactual= 0
+  *para cada columna j desde 0 hasta M-1:
+  a.Sumar el valor actual al acumulado:
+   AC= AC+ matriz [i][j]
+  b.Verificar si existe un evento:
+   SI AC>= ( j + 1) * L Y AC<= (j + 1) * U ENTONCES.
+  c.Si existe evento:
+   *Calcular: impacto= AC - (j + 1) * L + 1
+   *Aumentar la cantidad de eventos de la fila:
+    eventosfila[i]=eventosfila[i] + 1
+   *Sumar el impacto:
+    impactofila[i]= impactofila[i] + impacto
+  *Aumentar los eventos de esa columna:
+   eventoscolumna[j] = eventoscolumna[j] + 1
+  *SI rachaactual> rachafila[i]:
+      rachafila[i]=rachaactual
+      inicioracha[i]=inicioactual
+  d.Si no existe evento:
+   *rachaactual=0
+   *inicioactual=0
+
+7.Determinar la fila prioritaria.
+  Para cada fila:
+   *preferir la fila con mayor
+    rachafila
+   *si hay empate, preferir mayor
+    impactofila
+   *si continua el empate, preferir mayor
+    eventosfila
+   *si continua el empate, elegir la fila con menor numero.
+
+8.Determinar la columna destacada:
+  *buscar la columna con mayor cantidad de eventos.
+  *si hay empate, elegir la columna con menor numero.
+
+9.Si no existe ningun evento en toda la matriz:
+  *prioridad=0
+  *columna=0
+
+10.Imprimir para cada fila:
+FILA i EVENTOS e IMPACTO s RACHA r INICIO b
+
+11.Imprimir el vector de eventos por columna:
+COLUMNAS c1 c2 ...cM
+
+12.Imprimir:
+PRIORIDAD fila
+
+13.Imprimir:
+COLUMNA columna.
+  
+    
+ 
 
 
 
