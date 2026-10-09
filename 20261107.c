@@ -6,7 +6,7 @@ compilacion: gcc-std= c11-Wall-wextra 20261107.c-o reto
 
 1) Codigo completo en c
 
-#include <studio.h>
+#include <stdio.h>
 
 #define MAX_DIM 30
 
@@ -14,10 +14,10 @@ int main(void) {
   int N,M;
   long L,U;
 // 1. Lectura y validacion de dimensiones y limites
-if(scanf(%d,%d,%ld,%ld´´,&N,&M,&L,&U)!=4{printf(¨ERROR n¨); return 0;
+if(scanf(¨%d,%d,%ld,%ld¨,&N,&M,&L,&U)!=4{printf(¨ERROR\n¨) return 0;
   }                                      
 
-if(N<1 || N> MAX_DIM || M> MAX_DIM || L<0 || L>U || U> 1000){ Prinft(¨ERROR n¨); return 0;
+if(N<1 || N> MAX_DIM || M>1 || M> MAX_DIM | |L<0 || L>U || U> 1000){ Prinft(¨ERROR n¨); return 0;
                                                           
 // 2.Lectura y validacion de la matriz
 int mat¨[MAX_DIM][MAX_DIM];
@@ -37,6 +37,7 @@ int col_eventos[MAX_DIM]={0};
 int total_eventos_matriz={0};
 
 // 3.Procesamiento de la matriz for (int i=0; i< N; i++) {
+for(int i=0; i< N; i++) {
 long AC=0;
 int racha_actual=0;
 int inicio_actual=0;
@@ -59,7 +60,8 @@ for(int j=0; j< M; j++) {
      total_eventos_matriz++;
 
      if(racha_actual==0) {
-        inicio_actual=k;//indice 1-bassed }
+        inicio_actual=k;//indice 1-bassed
+     }
      racha_actual++;
 
      if(racha_actual>max_racha) {
@@ -170,8 +172,8 @@ INICIO
       rachafila[i]=rachaactual
       inicioracha[i]=inicioactual
   d.Si no existe evento:
-   *rachaactual=0
-   *inicioactual=0
+   *rachaactual> rachafila[i]:=0
+   *inicioactual> inicioactual=0
 
 7.Determinar la fila prioritaria.
   Para cada fila:
