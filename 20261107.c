@@ -14,17 +14,17 @@ int main(void) {
   int N,M;
   long L,U;
 // 1. Lectura y validacion de dimensiones y limites
-if(scanf(¨%d %d %ld %ld¨,&N,&M,&L,&U)!=4{
-  prinft(¨ERROR\n¨); return 0;  }
+if (scanf(¨%d %d %ld %ld¨,&N,&M,&L,&U)!=4 {
+  prinft (¨ERROR\n¨); return 0;  }
                                       
 
-if(N<1 || N> MAX_DIM || M>1 || M> MAX_DIM || L<0 || L>U || U> 1000){ Prinft(¨ERROR n¨); return 0;
+if (N<1 || N> MAX_DIM || M>1 || M> MAX_DIM || L<0 || L>U || U> 1000) { Prinft (¨ERROR n¨); return 0;
                                                           
 // 2.Lectura y validacion de la matriz
-int mat¨[MAX_DIM][MAX_DIM];
+int mat[MAX_DIM][MAX_DIM];
 for(int i=0; i<N; i++){
  for(int j=0;j< M; j++){
-   if(scanf(¨%d¨,&mat[i][j] !=1 || mat[i][j] <0|| mat[i][j]> 1000){ prinft(¨ERROR n¨);return 0;
+   if (scanf(¨%d¨, &mat[i][j] !=1 || mat[i][j] <0 || mat[i][j]> 1000) { prinft (¨ERROR n¨); return 0;
 }
 }
 }
@@ -87,7 +87,7 @@ if(total_eventos_matriz>0) {
    for(int i=1; i< N; i++) {
      if(fila_racha[i]> fila_racha[mejor_fila]) { mejor fila= i;
        }  else if(fila_racha[i]==fila_racha[mejor_fila]){
-       if(fila_impacto[i]>fila_impacto[mejor_fila]{ mejor_fila=i;
+       if (fila_impacto[i]> fila_impacto[mejor_fila]{ mejor_fila=i;
          }else IF(fila_impacto[i]==fila_impacto[mejor_fila]){
            if(fila_eventos[i]>fila_eventos[mejor_fila]){ mejor_fila=i;
             }                                                                                        
