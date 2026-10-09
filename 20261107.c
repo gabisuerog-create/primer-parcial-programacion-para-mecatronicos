@@ -75,8 +75,8 @@ for(int j=0; j< M; j++) {
          inicio_actual=0;
         }
       }
-      fila_racha[i]=max_racha
-      fila_inicio[i]=(max_racha>0) ? i inicio_max_racha:0;
+      fila_racha[i]=max_racha;
+      fila_inicio[i]=(max_racha>0) ? i inicio_max_racha:0; i
     }
 
 // 4.Seleccion de fila prioritaria y columna destacada con desempates
