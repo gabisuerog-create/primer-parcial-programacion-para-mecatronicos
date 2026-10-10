@@ -1,0 +1,57 @@
+1.RESUMEN EJECUTIVO:
+
+El programa en c desarrollado implementa una herramienta de procesamiento de matrices N X M orientada a la deteccion y
+evaluacin de eventos operacionales basados en acumulaciones consecutivas.
+
+A traves del recorrido paso a paso de la matriz, el algoritmo calcula el valor acumulado (AC) por fila y verifica si este se mantiene
+dentro de una ventana proporcional[K . L, K . U] segun la columna K actual.
+
+2.METRICAS Y MECANICA DE CALCULO:
+
+Para cada elemento (i,j) de la matriz ( donde k= j + 1 es el indice de columna en base 1):
+
+* Acumulado continuo (AC):
+    j
+AC= E mat[i] [x]
+    X=0
+
+* Condicion de evento: un evento es valido si se cumple la condicion:
+K . L < AC < K . U
+
+ * Impacto: si ocurre un evento, el impacto individual se calcula como:
+ Impacto= AC - (K . L) + 1
+
+*Racha maxima e inicio: rastrea la secuencia continua mas larga de columnas que cumplen la condicion
+por fila, registrando la columna k donde inicio dicha racha.
+
+3.JERARQUIA Y DESEMPATES:
+
+* Fila prioritaria: en caso de existir al menos un evento en toda la matriz, la fila prioritaria se
+determina comparando metodicamente:
+
+1* mayor racha de eventos
+2* mayor impacto total acumulado ( en caso de empate en racha )
+3* mayor cantidad de eventos ( en caso de empate en impacto )
+4* menor indice de fila ( si todos los criterios anteriores coinciden)
+
+Columna destacada: se selecciona la columna j que registra la mayor cantidad de eventos entre todas
+las filas. un empate entre dos o mas columnas, se selecciona la de menor indice ( j menor ).
+
+4.ESTRUCTURA DE COMPLEJIDAD Y RENDIMIENTO:
+
+* Tiempo ( temporal ): complejidad=  0( N X M ) :
+Detalle: la matriz se recorre un numero fijo de veces ( lectura y procesamiento ). para N, M < 30, requiere
+un maximo de 900 iteraciones.
+
+* Espacio ( espacial ): complejidad=  0( N X M ) :
+Detalle: utiliza una matriz estatica de 30 X 30 enteros ( int mat [30][30] ) y
+arreglos auxiliares de tamano 30.
+
+5.PUNTOS FUERTES Y CASOS BORDE EVALUADOS:
+
+* Validaciones robustas: El programa descarta entradas fuera de rango ( N,M E [ 1,30], L,U E [0,1000], L > U) e imprime.
+
+* Manejo de matriz vacia/sin eventos: si ningun elemento genera eventos, el programa mantiene "PRIORIDAD 0 Y COLUMNA 0" correctamente en la salida final.
+
+* Control de tipos: Los acumuladores e impactos utilizan "long" para prevenir desbordamientos (overflows) en matrices con sumas grandes.
+
