@@ -1,0 +1,303 @@
+CASOS DE PRUEBA ESTANDAR:
+
+Caso 1: matriz | x | basica con evento
+Entrada:
+
+ text
+  1 1 5 10
+  7
+  Salida esperada:
+
+  text
+  FILA 1 EVENTOS 1 IMPACTO 3 RACHA 1 INICIO 1
+  COLUMNAS 1
+  PRIORIDAD 1
+  COLUMNA 1
+
+  *Evaluacion: Matriz minima con un solo evento valido ( 5 < 7 < 10 )
+
+  Caso 2: Matriz | x | sin eventos
+  Entrada:
+
+   text
+   1 1 5 10
+   2
+   Salida esperada:
+
+   text
+   FILA 1 EVENTOS 0 IMPACTO 0 RACHA 0 INICIO 0
+   COLUMNAS 0
+   PRIORIDAD 0
+   COLUMNA 0
+
+   *Evaluacion: verificacion de matriz sin eventos ( PRIORIDAD 0 Y COLUMNA 0 ).
+
+   Caso 3: Dimensiones invalidas ( N < 1)
+   Entrada:
+
+   text
+   0 5 10 20
+   Salida esperada:
+
+   tezt
+   ERROR
+
+   *Evaluacion: Validacion de N < 1.
+
+   Caso 4: Dimensiones invalidas ( M > 30)
+   Entrada:
+
+   text
+   2 31 10 20
+   Salida esperada:
+
+   text
+   ERROR
+
+   Evaluacion: Validacion de limite superior de dimension ( MAX_DIM = 30).
+
+   Caso 5: Rangos invalidos ( L > U )
+   Entrada:
+
+   text
+   2 2 50 10
+   1 2
+   3 4
+   Salida esperada:
+
+   text
+   ERROR
+
+   Evaluacion: Deteccion de limite inferior mayor que el superior.
+
+   Caso 6: Rango de limite invalido ( U > 1000 )
+   Entrada:
+
+   text
+   2 2 10 1005
+   1 2
+   3 4
+   Salida esperada:
+
+   text 
+   ERROR
+
+   Evaluacion: Validacion de limite U > 1000.
+
+   Caso 7: Valor de matriz fuera de rango (negativo)
+   Entrada:
+
+   text
+   2 2 5 10
+   3-1
+   2 4
+   Salida esperada
+
+   text
+   ERROR
+   
+   Evaluacion: Rechazo de matriz con numeros negativos.
+
+   Caso 8: Valor de matriz fuera de rango (> 1000 )
+   Entrada:
+
+   text
+   2 2 5 10
+   3 1001
+   2 4
+   Salida esperada:
+
+   text
+   ERROR
+
+   Evaluacion: Rechazo de elementos mayores a 1000.
+
+   Caso 9: Racha continua maxima y columna de inicio
+   Entrada:
+
+   text
+   1 5 2 5
+   3 1 2 100 3
+   Salida esperada:
+
+   text
+   FILA 1 EVENTOS 3 IMPACTO 4 RACHA 3 INICIO 1
+   COLUMNAS 1 1 1 0 0
+   PRIORIAD 1
+   COLUMNA 1
+
+   Evaluacion: ruptura de racha por un valor grande y calculo correcto de "INICIO" en la racha maxima.
+
+   Caso 10: Desempate por racha
+   Entrada:
+
+   text
+   2 3 2 6
+   3 1 10
+   3 1 1
+   Salida esperada:
+
+   text
+   FILA 1 EVENTOS 2 IMPACTO 4 RACHA 2 INICIO 1
+   FILA 2 EVENTOS 3 IMPACTO 4 RACHA 3 INICIO 1
+   COLUMNAS 2 2 1
+   PRIORIDAD 2
+   COLUMNA 1
+
+   Evaluacion: Fila 2 gana la prioridad por tener mayor racha ( 3 vs 2 ).
+
+   Caso 11: Desempate por impacto ( igual racha )
+   Entrada:
+
+   text
+   2 2 2 8
+   4 1
+   6 1
+   Salida esperada:
+
+   text
+   FILA 1 EVENTOS 2 IMPACTO 7 RACHA 2 INICIO1 1
+   FILA 2 EVENTOS 2 IMPACTO 11 RACHA 2 INICIO 1
+   COLUMNAS 2 2
+   PRIORIDAD 2
+   COLUMNA 1
+
+   Evaluacion: A igual racha (2), la fila 2 gana por mayor impacto ( 11 vs 7 ).
+
+   Caso 12: Desempate por cantidad de eventos ( igual racha e igual impacto)
+   Entrada:
+
+   text
+   2 4 5 10
+   6 100 0 0
+   6 0 0 0
+   Salida esperada:
+
+   text
+   FILA 1 EVENTOS 1 IMPACTO 2 RACHA 1 INICIO 1
+   FILA 2 EVENTOS 1 IMPACTO 2 RACHA 1 INICIO 1
+   COLUMNAS 2 0 0 0
+   PRIORIDAD 1
+   COLUMNA 1
+
+   Evaluacion: coincidencia total en metricas; prevalece la fila menor indice ( fila 1 ).
+
+   Caso 13: Desempate de columna destacada por menor indice
+   Entrada:
+
+   text
+   2 3 1 5
+   2 100 100
+   100 2 100
+   Salida esperada:
+
+   text
+   FILA 1 EVENTOS 1 IMPACTO 2 RACHA 1 INICIO 1
+   FILA 2 EVENTOS 1 IMPACTO 1 RACHA 1 INICIO 2
+
+   Evaluacion: Empate de eventos entre columna 1 y columna 2; se selecciona la menor ( columna 1).
+
+   Caso 14: Acumulacion exacta en los limites ( L Y U )
+   Entrada:
+
+   text
+   1 2 5 10
+   5 5
+   Salida esperada:
+
+   text
+   FILA 1 EVENTOS 2 IMPACTO 2 RACHA 2 INICIO 1
+   COLUMNAS 1 1
+   PRIORIDAD 1
+   COLUMNA 1
+
+   Evaluacion: AC= 5 ( COINCIDE EXACTAMENTE CON 1 . L) Y AC= 10
+   ( COINCIDE EXACTAMENTE CON 2 . U).
+
+   Caso 15: Varias rachas en la misma fila ( gana la primera ).
+   Entrada:
+
+   text
+   1 6 2 4
+   3 1 100 3 1 100
+   Salida esperada:
+
+   text
+   FILA 1 EVENTOS 4 IMPACTO 6 RACHA 2 INICIO 1
+   COLUMNA 1 1 0 1 1 0
+   PRIORIDAD 1
+   COLUMNA 1
+
+   Evaluacion: Hay dos rachas de longitud 2 ( en columnas 1-2 y 4-5); se mantiene el indice de inicio de la primera ( inicio 1 ).
+
+   Caso 16: Matriz grande ( 30 x 30 )
+   Entrada: ( Matriz de 30 x 30 con ceros e inicializacion L = 0, U= 0)
+
+   text
+   30 30 0 0
+   [...30 filas de 30 ceros...]
+   Salidas esperadas:
+
+   text
+   FILA 1 EVENTOS 30 IMPACTO 30 RACHA 30 INICIO 1 
+   FILA 30 EVENTOS 30 IMPACTO 30 RACHA 30 INICIO 1
+   COLUMNAS 30 30...30
+   PRIORIDAD 1
+   COLUMNA 1
+
+   Evaluacion: verificacion de limites dimensionales maximos (30 x 30 ).
+
+   Caso 17: Multiples ceros intercalados
+   Entrada:
+
+   text
+   1 4 2 5
+   3 0 0 100
+   100 100 4 1
+   Salida esperada
+
+   text
+   FILA 1 EVENTOS 3 IMPACTO 7 RACHA 3 INICIO 1
+   COLUMNAS 1 1 1 0
+   PRIORIDAD 1
+   COLUMNA 1
+
+   Evaluacion: los ceros mantienen el valor acumulado constante.
+
+   Caso 18: Matriz no cuadrada 2 x 4 con rachas desplazadas
+   Entrada
+
+   text
+   2 4 3 8
+   100 4 1 1
+   100 100 4 1
+   Salida esperada:
+
+   text
+   FILA 1 EVENTOS 0 IMPACTO 0 RACHA 0 INICIO 0
+   FILA 2 EVENTOS 1 IMPACTO 2 RACHA 1 INICIO 4
+   COLUMNAS 0 0 0 1
+   PRIORIDAD 2
+   COLUMNA 4
+
+   Explicacion: la fila 1 acumula 100, la fila 2 solo al llegar a la columna 4 el acumulado entra en rango ( 3 . 4 105  8 . 4 ).
+
+   Caso 19: Desempate completo de fila y eleccion de columna distinta a la columna
+   Entrada:
+
+   text
+   3 3 2 5
+   3 1 100
+   100 3 100
+   100 3 100
+   Salida esperada:
+
+   text
+    FILA 1 EVENTOS 2 IMPACTO 3 RACHA 2 INICIO 1
+    FILA 2 EVENTOS 1 IMPACTO 1 RACHA 1 INICIO 2
+    FILA 3 EVENTOS 1 IMPACTO 1 RACHA 1 INICIO 2
+    COLUMNAS 1 3 0
+    PRIORIDAD 1
+    COLUMNA 2
+   
+   
